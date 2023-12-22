@@ -16,21 +16,21 @@
                 <div class="row g-3">
                   <div class="col-md-4">
                     <label for="validationCustom01" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="validationCustom01" value="{{ $usuario->name }}">
+                    <input type="text" name="name" class="form-control" id="validationCustom01" value="{{ $usuario->name }}">
                     <div class="valid-feedback">
                       Tudo ok!
                     </div>
                   </div>
                   <div class="col-md-4">
                     <label for="validationCustom02" class="form-label">Sobrenome</label>
-                    <input type="text" class="form-control" id="validationCustom02" value="{{ $usuario->last_name }}">
+                    <input type="text" name="last_name" class="form-control" id="validationCustom02" value="{{ $usuario->last_name }}">
                     <div class="valid-feedback">
                       Tudo ok!
                     </div>
                   </div>
                   <div class="col-md-4">
                     <label for="validationCustom03" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="validationCustom03" value="{{ $usuario->email }}">
+                    <input type="email" name="email" class="form-control" id="validationCustom03" value="{{ $usuario->email }}">
                     <div class="invalid-feedback">
                       Por favor informe seu email.
                     </div>

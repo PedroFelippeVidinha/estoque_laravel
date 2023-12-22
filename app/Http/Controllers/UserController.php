@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -76,22 +77,19 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updateuser(Request $request, $id)
+    public function updateuser(UserRequest $request, $id)
     {
         {
             $id = $request->id;
     
-            $request->validate([
-                'name' => 'required|string|max:255',
-                'last_name' => 'required|string|max:255',
-                'email' => 'required|email|max:255|unique:users',
-                'password' => 'nullable|string|min:8|confirmed',
-            ]);
+            $request->validated([]);
     
             $updateUsuario = [
                 "name" => $request->name,
                 "last_name" => $request->name,
                 "email" => $request->email,
+                "profile_id" => $request->perfil,
+                "space_id" => $request->space_id
             ];
     
             if (isset($request->password)) {

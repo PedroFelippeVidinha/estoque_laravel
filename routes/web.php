@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
-// use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\CategoryController;
+// use App\Http\Controllers\SpaceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,12 +31,20 @@ Route::get('/usuario-edit/{id}', [UserController::class, 'edituser'])->name('use
 Route::put('/usuario-update/{id}', [UserController::class, 'updateuser'])->name('user.update');
 Route::delete('/usuario-delete/{id}', [UserController::class, 'deleteuser'])->name('user.delete');
 
-    /* Route::get('/categories', [CategoriesController::class, 'indexcategoria'])->name('categorias');
-    Route::get('/novacategoria', [CategoriesController::class, 'createcategoria'])->name('novocategoria');
-    Route::post('/novacategoria-store', [CategoriesController::class, 'storecategoria'])->name('storecategoria');
-    Route::get('/categoria-show/{id}', [CategoriesController::class, 'showCcategoria])->name('showcategoria');
-    Route::get('/categoria-edit/{id}', [CategoriesController::class, 'editcategoria'])->name('editcategoria');
-    Route::put('/categoria-update/{id}', [CategoriesController::class, 'updatecategoria'])->name('updatecategoria');
-    Route::delete('/categoria-delete/{id}', [CategoriesController::class, 'deletecategoria'])->name('deletecategoria'); */
+Route::get('/categorias', [CategoryController::class, 'indexcategory'])->name('category.index');
+Route::get('/novacategoria', [CategoryController::class, 'create'])->name('category.create');
+Route::post('/novacategoria-store', [CategoryController::class, 'store'])->name('category.store');
+Route::get('/categoria-show/{id}', [CategoryController::class, 'show'])->name('category.show');
+Route::get('/categoria-edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+Route::put('/categoria-update/{id}', [CategoryController::class, 'update'])->name('category.update');
+Route::delete('/categoria-delete/{id}', [CategoryController::class, 'delete'])->name('category.delete');
+
+/* Route::get('/espacos', [SpaceController::class, 'indexspace'])->name('space.index');
+Route::get('/novoespaco', [SpaceController::class, 'create'])->name('space.create');
+Route::post('/novoespaco-store', [SpaceController::class, 'store'])->name('space.store');
+Route::get('/espaco-show/{id}', [SpaceController::class, 'show'])->name('space.show');
+Route::get('/espaco-edit/{id}', [SpaceController::class, 'edit'])->name('space.edit');
+Route::put('/espaco-update/{id}', [SpaceController::class, 'update'])->name('space.update');
+Route::delete('/espaco-delete/{id}', [SpaceController::class, 'delete'])->name('space.delete'); */
 
 
