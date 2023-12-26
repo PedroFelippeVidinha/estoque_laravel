@@ -5,19 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Space extends Model
+class Uf extends Model
 {
     use HasFactory;
 
+
+    protected $table = 'ufs';
+
     protected $fillable = [
-        'name',
-        'complexo',
-        'uf_id'
+        'uf'
     ];
 
-    public function ufs() {
-        return $this->belongsTo(Uf::class);
+    public function spaces() {
+       return $this->hasMany(Space::class, 'uf_id', 'id');
     }
-    
 }
-
