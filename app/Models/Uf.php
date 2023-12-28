@@ -13,7 +13,8 @@ class Uf extends Model
     protected $table = 'ufs';
 
     protected $fillable = [
-        'uf'
+        'uf',
+        'name'
     ];
 
     public function spaces() {

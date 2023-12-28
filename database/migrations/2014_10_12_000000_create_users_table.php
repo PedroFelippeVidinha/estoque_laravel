@@ -16,7 +16,8 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->foreignId('space_id')->nullable()->constrained('spaces', 'id');
-            $table->foreignId('profile_id')->constrained('profiles', 'id');
+            // $table->foreignId('profile_id')->constrained('profiles', 'id');
+            $table->enum("role", ['super-admin', 'admin', 'user'])->default('user');
             $table->string('name');
             $table->string('last_name');
             $table->string('email')->unique();
