@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('space_id')->constrained('spaces', 'id');
+            $table->foreignId('space_id')->nullable()->constrained('spaces', 'id');
             $table->foreignId('profile_id')->constrained('profiles', 'id');
             $table->string('name');
             $table->string('last_name');
