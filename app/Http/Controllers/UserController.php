@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -15,12 +16,13 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexuser(Request $request) {
-        
+    public function indexuser(Request $request)
+    {
+
         $usuarios = User::all();
-        
-        return view ('user.index', compact('usuarios'))
-            ->with('i', (request()->input('page', 1) - 1) * 2); 
+
+        return view('user.index', compact('usuarios'))
+            ->with('i', (request()->input('page', 1) - 1) * 2);
     }
 
     /**
@@ -39,9 +41,24 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateUserRequest $request)
     {
-        // Aproveita de Auth
+        $request->validated();
+        // verifica se o usuario logado pode criar..
+
+        if(Auth::user()->can('create', Auth::user())) {
+
+            return User::create([
+               'name' => $request['name'],
+               'last_name' => $request['last_name'],
+               'email' => $request['email'],
+               'password' => Hash::make($request['password']),
+            ]);
+
+        };
+
+        // Pode colocar algum redirect para home com mensagem de não perimitido
+        return abort(500);
     }
 
     /**
@@ -50,11 +67,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function showuser($id) {
-        
+    public function showuser($id)
+    {
+
         $usuario = User::where('id', $id)->first();
 
-        return view('user.show',compact('usuario'));
+        return view('user.show', compact('usuario'));
     }
 
     /**
@@ -63,11 +81,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edituser($id) {
-        
+    public function edituser($id)
+    {
+
         $usuario = User::where('id', $id)->first();
 
-        return view('user.edit',compact('usuario'));
+        return view('user.edit', compact('usuario'));
     }
 
     /**
@@ -81,9 +100,9 @@ class UserController extends Controller
     {
         {
             $id = $request->id;
-    
+
             $request->validated([]);
-    
+
             $updateUsuario = [
                 "name" => $request->name,
                 "last_name" => $request->name,
@@ -91,13 +110,13 @@ class UserController extends Controller
                 "profile_id" => $request->perfil,
                 "space_id" => $request->space_id
             ];
-    
+
             if (isset($request->password)) {
                 $updateUsuario['password'] = Hash::make($request->password);
             }
-    
+
             User::where("id", $id)->update($updateUsuario);
-    
+
             return redirect()->route('user.index')
                 ->with('success', 'Usuário atualizado com sucesso.');
         }
@@ -115,6 +134,6 @@ class UserController extends Controller
         $usuario->delete();
 
         return redirect()->route('user.index')
-                        ->with('success','Usuário excluído com sucesso.');
+                        ->with('success', 'Usuário excluído com sucesso.');
     }
 }

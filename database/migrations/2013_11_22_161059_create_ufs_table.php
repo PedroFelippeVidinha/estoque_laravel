@@ -16,67 +16,14 @@ class CreateUfsTable extends Migration
     {
         Schema::create('ufs', function (Blueprint $table) {
             $table->id();
-            $table -> string('uf', 50);
+            $table->string('name', 50);
+            $table -> string('uf', 2);
             $table->timestamps();
         });
 
-        Uf::insert(
-            array(
-                ['uf' => 'Acre'],
-
-                ['uf' => 'Alagoas'],
-
-                ['uf' => 'Amazonas'],
-
-                ['uf' => 'Amapá'],
-
-                ['uf' => 'Bahia'],
-
-                ['uf' => 'Ceará'],
-
-                ['uf' => 'Distrito Federal'],
-
-                ['uf' => 'Espírito Santo'],
-
-                ['uf' => 'Goiás'],
-
-                ['uf' => 'Maranhão'],
-
-                ['uf' => 'Minas Gerais'],
-
-                ['uf' => 'Mato Grosso do Sul'],
-
-                ['uf' => 'Mato Grosso'],
-
-                ['uf' => 'Pará'],
-
-                ['uf' => 'Paraíba'],
-
-                ['uf' => 'Pernambuco'],
-
-                ['uf' => 'Piauí'],
-
-                ['uf' => 'Paraná'],
-
-                ['uf' => 'Rio de Janeiro'],
-
-                ['uf' => 'Rio Grande do Norte'],
-
-                ['uf' => 'Rondônia'],
-
-                ['uf' => 'Roraima'],
-
-                ['uf' => 'Rio Grande do Sul'],
-
-                ['uf' => 'Santa Catarina'],
-
-                ['uf' => 'Sergipe'],
-
-                ['uf' => 'São Paulo'],
-
-                ['uf' => 'Tocantins']
-
-            ));
+        foreach($this->states as $state) {
+            UF::create($state);
+        };
     }
 
     /**
@@ -88,4 +35,34 @@ class CreateUfsTable extends Migration
     {
         Schema::dropIfExists('ufs');
     }
+
+    private $states = [
+        ['uf' => 'AC', "name" => 'Acre'],
+        ['uf' => 'AL', "name" => 'Alagoas'],
+        ['uf' => 'AM', "name" => 'Amazonas'],
+        ['uf' => 'AP', "name" => 'Amapá'],
+        ['uf' => 'BA', "name" => 'Bahia'],
+        ['uf' => 'CE', "name" => 'Ceará'],
+        ['uf' => 'DF', "name" => 'Distrito Federal'],
+        ['uf' => 'ES', "name" => 'Espírito Santo'],
+        ['uf' => 'GO', "name" => 'Goiás'],
+        ['uf' => 'MA', "name" => 'Maranhão'],
+        ['uf' => 'MG', "name" => 'Minas Gerais'],
+        ['uf' => 'MS', "name" => 'Mato Grosso do Sul'],
+        ['uf' => 'MT', "name" => 'Mato Grosso'],
+        ['uf' => 'PR', "name" => 'Pará'],
+        ['uf' => 'PB', "name" => 'Paraíba'],
+        ['uf' => 'PE', "name" => 'Pernambuco'],
+        ['uf' => 'PI', "name" => 'Piauí'],
+        ['uf' => 'PR', "name" => 'Paraná'],
+        ['uf' => 'RJ', "name" => 'Rio de Janeiro'],
+        ['uf' => 'RN', "name" => 'Rio Grande do Norte'],
+        ['uf' => 'RO', "name" => 'Rondônia'],
+        ['uf' => 'RR', "name" => 'Roraima'],
+        ['uf' => 'RS', "name" => 'Rio Grande do Sul'],
+        ['uf' => 'SC', "name" => 'Santa Catarina'],
+        ['uf' => 'SE', "name" => 'Sergipe'],
+        ['uf' => 'SP', "name" => 'São Paulo'],
+        ['uf' => 'TO', "name" => 'Tocantins']
+    ];
 }

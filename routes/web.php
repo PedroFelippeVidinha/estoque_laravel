@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+
 // use App\Http\Controllers\SpaceController;
 
 /*
@@ -48,3 +50,10 @@ Route::put('/espaco-update/{id}', [SpaceController::class, 'update'])->name('spa
 Route::delete('/espaco-delete/{id}', [SpaceController::class, 'delete'])->name('space.delete'); */
 
 
+// Rotas temporarias
+Route::get("/create-user", function () {
+    $registerUrl = "store-user";
+    return view('auth.register', compact('registerUrl'));
+});
+
+Route::post('/store', [UserController::class, 'store'])->name('store-user');
