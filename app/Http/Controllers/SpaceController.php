@@ -38,7 +38,7 @@ class SpaceController extends Controller
      */
     public function store(SpaceRequest $request)
     {
-        $request = validated();
+        $request->validated();
 
         return redirect()->route('space.index')
                         ->with('success','Espaço criado com sucesso.');
@@ -79,7 +79,7 @@ class SpaceController extends Controller
      */
     public function update(SpaceRequest $request, Space $spaces)
     {
-        $request = Validated();
+        $request->validated();
 
         return redirect()->route('space.index')
                         ->with('success','Espaço atualizado com sucesso.');

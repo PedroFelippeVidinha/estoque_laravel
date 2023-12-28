@@ -6,26 +6,22 @@ use App\Models\Traits\Tenantable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Movement_product extends Model
 {
     use HasFactory, Tenantable;
 
     protected $fillable = [
-
         'space_id',
-        'category_id',
-        'name',
-        'tipo',
-        'marca',
-        'tamanho',
-        'condicao',
-        'fornecedor',
+        'product_id',
+        'movement_id',
+        'user_id',
+        'quantidade',
+        'resp_retirada',
+        'local_retirada',
+        'localizacao',
         'descricao',
-        'foto',
-        'patrimonio',
-        'numero_patrimonial',
-        'numero_controle',
         'observacao',
-        
+        'data_entrada',
+        'data_retirada',
     ];
 }

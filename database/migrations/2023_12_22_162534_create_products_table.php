@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('tipo');
             $table->string('marca');
             $table->string('tamanho');
-            $table->string('condição');
+            $table->string('condicao');
             $table->string('fornecedor');
             $table->text('descricao');
             $table->string('foto')->nullable();
@@ -30,17 +30,7 @@ class CreateProductsTable extends Migration
             $table->string('numero_controle')->nullable();
             $table->text('observacao');
             $table->timestamps();
-            //Acredito que aqui seriam atibutos de movimentação-> Atribuído a, quantidade, 
-            //material, local, localização, dt entrada, observações, 
-            //
-            // Patrimonio -> Sim: 
-            // • Ter a opção de controle de movimentação do bem, de modo que possamos informar em qual local está, a data de entrada/saída e o responsável pela retirada do bem para uso.
-            // • Ter a opção de retirar o bem do sistema em caso de devolução ou baixa patrimonial.
-
-            // Patrimonio -> Não:
-            // 
-            //     • Ter a opção de retirar do controle de estoque em caso de uso/consumo.
-            //     • Registrar datas de retiradas e quem retirou.
+            
         });
     }
 

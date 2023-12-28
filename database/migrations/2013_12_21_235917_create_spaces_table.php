@@ -15,7 +15,7 @@ class CreateSpacesTable extends Migration
     {
         Schema::create('spaces', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('uf_id')->constrained('ufs', 'id');
+            $table->foreignIdFor('uf_id')->constrained('ufs', 'id');
             $table->string('name', 255);
             $table->string('complexo', 255);
             $table->timestamps();
