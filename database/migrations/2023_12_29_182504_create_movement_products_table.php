@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMovement_productsTable extends Migration
+class CreateMovementProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,10 +15,10 @@ class CreateMovement_productsTable extends Migration
     {
         Schema::create('movement_products', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor('space_id')->constrained('spaces', 'id');
-            $table->foreignIdFor('product_id')->constrained('products', 'id');
-            $table->foreignIdFor('movement_id')->constrained('movements', 'id');
-            $table->foreignIdFor('user_id')->constrained('users', 'id');
+            $table->foreignId('space_id')->constrained('spaces', 'id');
+            $table->foreignId('product_id')->constrained('products', 'id');
+            $table->foreignId('movement_id')->constrained('movements', 'id');
+            $table->foreignId('user_id')->constrained('users', 'id');
             $table->integer('quantidade');
             $table->string('resp_retirada');
             $table->string('local_retirada');

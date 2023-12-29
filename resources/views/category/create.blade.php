@@ -19,14 +19,14 @@
                     </div>
                   </div>
                   
-                  <div class="col-12">
+                  <div class="col-12 col text-center mt-5">
                     <button type="submit" class="btn btn-success m-2" style="float: center;" title="Criar">
                       Criar
                     </button>
-                  </div>
-                  <a class="btn btn-primary m-2" style="float: center;" href="{{ url()->previous() }}" type="button">
+                    <a class="btn btn-primary m-2" style="float: center;" href="{{ url()->previous() }}" type="button">
                     Voltar
                   </a>
+                </div>
                 </form>
               </div>
             </div>

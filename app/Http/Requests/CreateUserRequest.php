@@ -33,4 +33,17 @@ class CreateUserRequest extends FormRequest
             'role' => ['nullable', new OnlySuperAdmin()]
         ];
     }
+
+    public function messages()  {
+        return [
+            'name.required' => 'O campo nome é obrigatório.',
+            'last_name.required' => 'O campo sobrenome é obrigatório.',
+            'email.unique' => 'Este email já está em uso.',
+            'email.required' => 'O campo email é obrigatório.',
+            'password.required' => 'O campo senha é obrigatório.',
+            'password.min' => 'A senha deve ter pelo menos 8 caracteres.',
+            'password.confirmed' => 'As senhas devem ser iguais.',
+            'profile_id.required' => 'O campo perfil é obrigatório.'
+        ];
+    }
 }

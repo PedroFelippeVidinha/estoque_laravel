@@ -61,11 +61,24 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Produtos
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="{{ route('product.create') }}">Criar</a></li>
+              <li><a class="dropdown-item" href="{{ route('product.index') }}">Visualizar</a></li>
+              {{-- <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Categorias
             </a>
             <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="#">Criar</a></li>
-              <li><a class="dropdown-item" href="#">Visualizar</a></li>
+              <li><a class="dropdown-item" href="{{ route('category.create') }}">Criar</a></li>
+              <li><a class="dropdown-item" href="{{ route('category.index') }}">Visualizar</a></li>
               {{-- <li>
                 <hr class="dropdown-divider">
               </li>

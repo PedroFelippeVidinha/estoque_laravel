@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SpaceController;
 
 // use App\Http\Controllers\SpaceController;
 
@@ -28,6 +30,7 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/usuarios', [UserController::class, 'indexuser'])->name('user.index');
+// Route::get('/usuarios', [UserController::class, 'createuser'])->name('user.create');
 Route::get('/usuario-show/{id}', [UserController::class, 'showuser'])->name('user.show');
 Route::get('/usuario-edit/{id}', [UserController::class, 'edituser'])->name('user.edit');
 Route::put('/usuario-update/{id}', [UserController::class, 'updateuser'])->name('user.update');
@@ -41,13 +44,21 @@ Route::get('/categoria-edit/{id}', [CategoryController::class, 'edit'])->name('c
 Route::put('/categoria-update/{id}', [CategoryController::class, 'update'])->name('category.update');
 Route::delete('/categoria-delete/{id}', [CategoryController::class, 'delete'])->name('category.delete');
 
-/* Route::get('/espacos', [SpaceController::class, 'indexspace'])->name('space.index');
+Route::get('/produtos', [ProductController::class, 'indexproduct'])->name('product.index');
+Route::get('/novoproduto', [ProductController::class, 'create'])->name('product.create');
+Route::post('/novoproduto-store', [ProductController::class, 'store'])->name('product.store');
+Route::get('/produto-show/{id}', [ProductController::class, 'show'])->name('product.show');
+Route::get('/produto-edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+Route::put('/produto-update/{id}', [ProductController::class, 'update'])->name('product.update');
+Route::delete('/produto-delete/{id}', [ProductController::class, 'delete'])->name('product.delete');
+
+Route::get('/espacos', [SpaceController::class, 'indexspace'])->name('space.index');
 Route::get('/novoespaco', [SpaceController::class, 'create'])->name('space.create');
 Route::post('/novoespaco-store', [SpaceController::class, 'store'])->name('space.store');
 Route::get('/espaco-show/{id}', [SpaceController::class, 'show'])->name('space.show');
 Route::get('/espaco-edit/{id}', [SpaceController::class, 'edit'])->name('space.edit');
 Route::put('/espaco-update/{id}', [SpaceController::class, 'update'])->name('space.update');
-Route::delete('/espaco-delete/{id}', [SpaceController::class, 'delete'])->name('space.delete'); */
+Route::delete('/espaco-delete/{id}', [SpaceController::class, 'delete'])->name('space.delete');
 
 
 // Rotas temporarias

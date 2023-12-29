@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Uf;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +16,8 @@ class CreateSpacesTable extends Migration
     {
         Schema::create('spaces', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor('uf_id')->constrained('ufs', 'id');
+            $table->foreignIdFor(Uf::class,'uf_id')->constrained();
+            // $table->foreignId('uf_id')->constrained('ufs', 'id');
             $table->string('name', 255);
             $table->string('complexo', 255);
             $table->timestamps();

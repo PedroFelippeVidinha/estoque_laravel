@@ -41,10 +41,10 @@ class Movement_productController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Movement_product  $movement_product
+     * @param  \App\Models\Movement_product  $Movement_product
      * @return \Illuminate\Http\Response
      */
-    public function show(Movement_product $movement_product)
+    public function show(Movement_product $Movement_product)
     {
         //
     }
@@ -52,10 +52,10 @@ class Movement_productController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Movement_product  $movement_product
+     * @param  \App\Models\Movement_product  $Movement_product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Movement_product $movement_product)
+    public function edit(Movement_product $Movement_product)
     {
         //
     }
@@ -64,10 +64,10 @@ class Movement_productController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Movement_product  $movement_product
+     * @param  \App\Models\Movement_product  $Movement_product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Movement_product $movement_product)
+    public function update(Request $request, Movement_product $Movement_product)
     {
         //
     }
@@ -75,10 +75,10 @@ class Movement_productController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Movement_product  $movement_product
+     * @param  \App\Models\Movement_product  $Movement_product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Movement_product $movement_product)
+    public function destroy(Movement_product $Movement_product)
     {
         //
     }

@@ -6,7 +6,7 @@
   <div class="row justify-content-center">
       <div class="col-md-12">
           <div class="card">
-              <div class="card-header">{{ __('Usuários') }}</div>
+              <div class="card-header">{{ __('Produtos') }}</div>
 
               <div class="card-body">
                 <table class="table table-striped table-hover">
@@ -21,19 +21,19 @@
                     </tr>
                   </thead>
                   <tbody class="table-group-divider">
-                    @foreach ($usuarios as $usuario)
+                    @foreach ($produtos as $produto)
                     <tbody class="text-center">
                       <tr class="text-center">
                         <td scope="col">{{ ++$i }}</td>
                         <td scope="col"></td>
-                        <td scope="col">{{$usuario->name}}</td>
-                        <td scope="col">{{$usuario->last_name}}</td>
-                        <td scope="col">{{$usuario->email}}</td>
+                        <td scope="col">{{$produto->name}}</td>
+                        <td scope="col">{{$produto->last_name}}</td>
+                        <td scope="col">{{$produto->email}}</td>
                         {{-- <td>{{$usuario->perfil}}</td> --}}
                         <td>
                           {{-- <form action="{{ route('deleteusuario', $usuario->id) }}" method="POST"> --}}
               
-                            <a class="badge text-bg-warning text-white" href="{{ route('user.show', ['id' => $usuario->id]) }}" title="Visualizar">
+                            <a class="badge text-bg-warning text-white" href="{{ route('product.show', ['id' => $product->id]) }}" title="Visualizar">
                               <i class="bi bi-eye" style="font-size: 15px; color: white;"></i>
                             </a> 
               
