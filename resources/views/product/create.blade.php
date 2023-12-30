@@ -129,20 +129,27 @@
 @endsection
 
 <script>
-  $(function() {
-    $("#inlineRadio1").click(function(){
-      if($(this).prop("checked")){
-        $("#num_pat").prop("disabled", false)
-        $(this).val('1')
-      } else {
-        $("#num_pat").prop("disabled", true)
-        $(this).val('0')
-      }
-      console.log($('#inlineRadio1').val())
-    })
+  document.getElementById("inlineRadio1").addEventListener("change", (event) => {
+    if(event.target.checked){
+    document.getElementById("num_pat").disabled = false;
+    event.target.value = '1';
+    } else {
+    document.getElementById("num_pat").disabled = true;
+    event.target.value = '0';
+    }
   });
 
-  $(function() {
+  /* document.getElementById("inlineRadio2").addEventListener("change", (event) => {
+    if(event.target.checked){
+    document.getElementById("num_control").disabled = false;
+    event.target.value = '0';
+    } else {
+    document.getElementById("num_control").disabled = true;
+    event.target.value = '1';
+    }
+  }); */
+
+  /* $(function() {
     $("#inlineRadio2").click(function(){
       if($(this).prop("checked")){
         $("#num_control").prop("disabled", false)
@@ -152,5 +159,5 @@
         $(this).val('1')
       }
     })
-  });
+  }); */
 </script>
