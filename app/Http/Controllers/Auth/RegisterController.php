@@ -41,6 +41,13 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function showRegistrationForm(){
+        if(User::count() > 0) {
+            return redirect('/');
+        }
+        return view('auth.register');
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -54,6 +61,8 @@ class RegisterController extends Controller
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role' => 'required',
+            'space_id' => 'required'
         ],
         [
                     'name.required' => 'O campo nome é obrigatório.',
@@ -62,7 +71,9 @@ class RegisterController extends Controller
                     'email.required' => 'O campo email é obrigatório.',
                     'password.required' => 'O campo senha é obrigatório.',
                     'password.min' => 'A senha deve ter pelo menos 8 caracteres.',
-                    'password.confirmed' => 'As senhas devem ser iguais.'
+                    'password.confirmed' => 'As senhas devem ser iguais.',
+                    'role.required' => 'O campo perfil é obrigatório.',
+                    'space_id.required' => 'O campo espaço é obrigatório.'
         ]
             
         );
@@ -80,6 +91,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
+            'role' => 'super-admin',
             'password' => Hash::make($data['password']),
         ]);
     }

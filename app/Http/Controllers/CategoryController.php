@@ -41,6 +41,10 @@ class CategoryController extends Controller
     {
         $request->validated();
 
+        return Category::create([
+            'category' => $request['category']
+         ]);
+
         return redirect()->route('category.index')
                         ->with('success','Categoria criada com sucesso.');
     }
@@ -78,12 +82,22 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, Category $category)
+    public function update(CategoryRequest $request, $id)
     {
-        $request->validated();
+        {
+            $id = $request->id;
 
-        return redirect()->route('category.index')
-                        ->with('success','Categoria atualizada com sucesso.');
+            $request->validated([]);
+
+            $updateCategoria = [
+                "category" => $request->category
+            ];
+
+            Category::where("id", $id)->update($updateCategoria);
+
+            return redirect()->route('category.index')
+                ->with('success', 'Categoria atualizada com sucesso.');
+        }
     }
 
     /**
@@ -94,8 +108,8 @@ class CategoryController extends Controller
      */
     public function delete($id)
     {
-        $usuario = Category::find($id);
-        $usuario->delete();
+        $categoria = Category::find($id);
+        $categoria->delete();
 
         return redirect()->route('category.index')
                         ->with('success','Categoria excluída com sucesso.');

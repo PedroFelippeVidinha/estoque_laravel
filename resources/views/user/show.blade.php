@@ -7,14 +7,16 @@
       <div class="col-md-12">
           <div class="card">
               <div class="card-header">{{ __('Usuário') }}
-                <form action="{{ route('user.delete', ['id' => $usuario->id]) }}" method="POST">
-                  {{-- <form id="delete-form-{{ $usuario->id }}" action="{{ route('user.delete', ['id' => $usuario->id]) }}" method="POST"> --}}
+                {{-- <form action="{{ route('user.delete', ['id' => $usuario->id]) }}" method="POST"> --}}
+                  <form id="delete-form-{{ $usuario->id }}" action="{{ route('user.delete', ['id' => $usuario->id]) }}" method="POST">
                   @csrf
                   @method('DELETE')
-              
-                  {{-- <button type="submit" class="badge text-bg-danger" style="float: right" onclick="return confirm('Tem certeza que deseja apagar o usuário?')" style="display:{{ auth()->user()->perfil == 'coordenacao' ? '' : 'none' }}" title="Deletar"> --}}
+                  {{-- <button class="badge text-bg-danger" style="float: right; font-size: 15px; margin-top: -15px" 
+                  href="{{ route('user.delete', $usuario->id) }}" onclick="return confirm('Tem certeza que deseja apagar o usuário?')" title="Deletar">
+                    <i class="bi bi-trash3"></i>
+                  </button> --}}
                   <a class="badge text-bg-danger" style="float: right; font-size: 15px; margin-top: -15px" 
-                      onclick="event.preventDefault();
+                    href="{{ route('user.delete', $usuario->id) }}" onclick="event.preventDefault();
                         if (confirm('Tem certeza que deseja excluir?')) {document.getElementById('delete-form-{{ $usuario->id }}').submit();}" title="Deletar">
                     <i class="bi bi-trash3"></i>
                   </a>

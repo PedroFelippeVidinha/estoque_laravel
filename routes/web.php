@@ -30,7 +30,8 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/usuarios', [UserController::class, 'indexuser'])->name('user.index');
-// Route::get('/usuarios', [UserController::class, 'createuser'])->name('user.create');
+Route::get('/novousuario', [UserController::class, 'createuser'])->name('user.create');
+Route::get('/novousuario-store', [UserController::class, 'storeuser'])->name('user.store');
 Route::get('/usuario-show/{id}', [UserController::class, 'showuser'])->name('user.show');
 Route::get('/usuario-edit/{id}', [UserController::class, 'edituser'])->name('user.edit');
 Route::put('/usuario-update/{id}', [UserController::class, 'updateuser'])->name('user.update');

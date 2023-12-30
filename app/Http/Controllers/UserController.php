@@ -30,9 +30,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createuser()
     {
-        // Aproveita de Auth
+        return view('user.create'); 
     }
 
     /**
@@ -57,8 +57,9 @@ class UserController extends Controller
 
         };
 
-        // Pode colocar algum redirect para home com mensagem de não perimitido
-        return abort(500);
+        // Colocar algum redirect para home com mensagem de não perimitido
+        return abort(500)->redirect()->route('user.index')
+            -> with('error', 'Acesso negado');
     }
 
     /**
@@ -107,8 +108,6 @@ class UserController extends Controller
                 "name" => $request->name,
                 "last_name" => $request->name,
                 "email" => $request->email,
-                "profile_id" => $request->perfil,
-                "space_id" => $request->space_id
             ];
 
             if (isset($request->password)) {

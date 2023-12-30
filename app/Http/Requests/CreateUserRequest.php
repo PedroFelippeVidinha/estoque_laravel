@@ -43,7 +43,7 @@ class CreateUserRequest extends FormRequest
             'password.required' => 'O campo senha é obrigatório.',
             'password.min' => 'A senha deve ter pelo menos 8 caracteres.',
             'password.confirmed' => 'As senhas devem ser iguais.',
-            'profile_id.required' => 'O campo perfil é obrigatório.'
+            'role.required' => 'O campo perfil é obrigatório.'
         ];
     }
 }

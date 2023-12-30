@@ -20,15 +20,15 @@
                     </div>
                   </div>
                   
-                  <div class="col-12">
+                  <div class="col-12 col text-center mt-5">
                     <button type="submit" class="btn btn-success m-2" style="float: center;" title="Salvar">
                       Salvar
                     </button>
-                  </div>
-                  <a class="btn btn-primary m-2" style="float: center;" href="{{ url()->previous() }}" type="button">
-                    Voltar
-                  </a>
-                </form>
+                    <a class="btn btn-primary m-2" style="float: center;" href="{{ url()->previous() }}" type="button" title="Salvar">
+                      Voltar
+                    </a>
+                  </form>
+                </div>
               </div>
             </div>
         </div>

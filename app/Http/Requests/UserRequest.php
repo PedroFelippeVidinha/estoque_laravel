@@ -28,8 +28,8 @@ class UserRequest extends FormRequest
             'last_name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'nullable|string|min:8|confirmed',
-            'profile_id' => 'required|exists:profiles,id',
-            'space_id' => 'required|exists:spaces,id'
+            // 'profile_id' => 'required|exists:profiles,id',
+            // 'space_id' => 'required|exists:spaces,id'
         ];
     }
 

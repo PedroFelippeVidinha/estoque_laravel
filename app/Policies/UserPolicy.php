@@ -41,7 +41,7 @@ class UserPolicy
      */
     public function create(User $user)
     {
-        return $user->role === 'super-admin' || $user->role === 'admin' ? Response::allow() : Response::deny("You cannot be able to create a a user");
+        return $user->role === 'super-admin' || $user->role === 'admin' ? Response::allow() : Response::deny("Você não pode criar um usuário");
     }
 
     /**
