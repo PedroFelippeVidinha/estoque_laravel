@@ -13,7 +13,7 @@ class ProductRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,8 +24,8 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'space_id',
-            'category_id',
+            // 'space_id',
+            // 'category_id',
             'name',
             'tipo',
             'marca',
@@ -33,9 +33,9 @@ class ProductRequest extends FormRequest
             'condicao',
             'fornecedor',
             'descricao',
-            'foto',
+            'foto' => 'image',
             'patrimonio',
-            'numero_patrimonial',
+            'numero_patrimonial' => 'unique:products',
             'numero_controle',
             'observacao',
         ];

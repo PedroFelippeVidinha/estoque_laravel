@@ -10,7 +10,7 @@
                 
               </div>
               <div class="card-body">
-                <form action="{{ route('product.store') }}" method="post">
+                <form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
                   @csrf
                 <div class="row g-3">
                   <div class="col-md-4">
@@ -64,11 +64,11 @@
                     <label for="validationCustom07" class="form-label">Patrimônio</label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1">
+                      <input class="form-check-input" type="radio" name="patrimonio" id="inlineRadio1" value="1">
                       <label class="form-check-label" for="inlineRadio1">Sim</label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="0">
+                      <input class="form-check-input" type="radio" name="patrimonio" id="inlineRadio2" value="0">
                       <label class="form-check-label" for="inlineRadio2">Não</label>
                     </div>
                   </div>
@@ -90,7 +90,9 @@
                 <div class="row g-3 mt-3">
                   <div class="col-md-4">
                     <label for="validationCustom08" class="form-label">Foto</label>
-                    <input type="text" name="foto" class="form-control" id="validationCustom08" value="">
+                    <div class="input-group">
+                      <input type="file" name="foto" class="form-control-file" id="validationCustom08" value="">
+                    </div>
                     <div class="valid-feedback">
                       Tudo ok!
                     </div>
@@ -126,38 +128,24 @@
         </div>
     </div>
 </div>
+<script async>
+  
+  const radioInputs = document.getElementsByName("patrimonio")
+  for(let i = 0; i < radioInputs.length; i++) {
+    radioInputs[i].addEventListener('change', () => {
+      if(radioInputs[i].value === '0'){
+        document.getElementById("num_pat").disabled = true
+        document.getElementById("num_control").disabled = false
+        return
+      }
+      document.getElementById("num_pat").disabled = false
+      document.getElementById("num_control").disabled = true
+      return
+    
+    })
+  }
+  
+</script>
+
 @endsection
 
-<script>
-  document.getElementById("inlineRadio1").addEventListener("change", (event) => {
-    if(event.target.checked){
-    document.getElementById("num_pat").disabled = false;
-    event.target.value = '1';
-    } else {
-    document.getElementById("num_pat").disabled = true;
-    event.target.value = '0';
-    }
-  });
-
-  /* document.getElementById("inlineRadio2").addEventListener("change", (event) => {
-    if(event.target.checked){
-    document.getElementById("num_control").disabled = false;
-    event.target.value = '0';
-    } else {
-    document.getElementById("num_control").disabled = true;
-    event.target.value = '1';
-    }
-  }); */
-
-  /* $(function() {
-    $("#inlineRadio2").click(function(){
-      if($(this).prop("checked")){
-        $("#num_control").prop("disabled", false)
-        $(this).val('0')
-      } else {
-        $("#num_control").prop("disabled", true)
-        $(this).val('1')
-      }
-    })
-  }); */
-</script>

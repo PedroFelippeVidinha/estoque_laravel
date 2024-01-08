@@ -15,8 +15,9 @@
                       <th scope="col">#</th>
                       <th scope="col"></th>
                       <th scope="col">Nome</th>
-                      <th scope="col">Sobrenome</th>
-                      <th scope="col">Email</th>
+                      <th scope="col">Tipo</th>
+                      <th scope="col">Marca</th>
+                      <th scope="col">Foto</th>
                       <th scope="col">Visualizar</th>
                     </tr>
                   </thead>
@@ -27,13 +28,13 @@
                         <td scope="col">{{ ++$i }}</td>
                         <td scope="col"></td>
                         <td scope="col">{{$produto->name}}</td>
-                        <td scope="col">{{$produto->last_name}}</td>
-                        <td scope="col">{{$produto->email}}</td>
-                        {{-- <td>{{$usuario->perfil}}</td> --}}
+                        <td scope="col">{{$produto->tipo}}</td>
+                        <td scope="col">{{$produto->marca}}</td>
+                        <td scope="col">{{$produto->foto}}</td>
                         <td>
                           {{-- <form action="{{ route('deleteusuario', $usuario->id) }}" method="POST"> --}}
               
-                            <a class="badge text-bg-warning text-white" href="{{ route('product.show', ['id' => $product->id]) }}" title="Visualizar">
+                            <a class="badge text-bg-warning text-white" href="{{ route('product.show', ['id' => $produto->id]) }}" title="Visualizar">
                               <i class="bi bi-eye" style="font-size: 15px; color: white;"></i>
                             </a> 
               

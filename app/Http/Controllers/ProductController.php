@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -17,7 +18,8 @@ class ProductController extends Controller
     {
         $produtos = Product::all();
 
-        return view('product.index', compact('produtos'));
+        return view('product.index', compact('produtos'))
+            ->with('i', (request()->input('page', 1) - 1) * 2);;
     }
 
     /**
@@ -39,6 +41,27 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $request->validated();
+
+        return Product::create([
+            // 'space_id' => $request['space_id'],
+            // 'category_id' => $request['category_id'],
+            'name' => $request['name'],
+            'tipo' => $request['tipo'],
+            'marca' => $request['marca'],
+            'tamanho' => $request['tamanho'],
+            'condicao' => $request['condicao'],
+            'fornecedor' => $request['fornecedor'],
+            'descricao' => $request['descricao'],
+            'foto' => $request['foto'],
+            'patrimonio' => $request['patrimonio'],
+            'numero_patrimonial' => $request['numero_patrimonial'],
+            'numero_controle' => $request['numero_controle'],
+            'observacao' => $request['observacao'],
+         ]);
+
+         if($request->foto){
+            $request['foto'] = $request->file('foto')->store('produtos', 'public');
+         }
 
         return redirect()->route('product.index')
                         ->with('success','Produto criado com sucesso.');
@@ -77,9 +100,44 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductRequest $request, Product $products)
+    public function update(ProductRequest $request, $id)
     {
-        $request->validated();
+        $id = $request->id;
+
+        $request->validated([]);
+
+        $updateProduto = [
+            //"space_id" => $request->space_id,
+            //"category_id" => $request->category_id,
+            "name" => $request->name,
+            "tipo" => $request->tipo,
+            "marca" => $request->marca,
+            "tamanho" => $request->tamanho,
+            "condicao" => $request->condicao,
+            "fornecedor" => $request->fornecedor,
+            "descricao" => $request->descricao,
+            "foto" => $request->foto,
+            "patrimonio" => $request->patrimonio,
+            "numero_patrimonial" => $request->numero_patrimonial,
+            "numero_controle" => $request->numero_controle,
+            "observacao" => $request->observacao
+        ];
+
+        if($request->foto){
+            Storage::exists('public/'.$request->foto) ? Storage::delete('public/'.$request->foto) : '';
+            
+            $request['foto'] = $request->file('foto')->store('produtos', 'public');
+        }
+
+        /* if($request->foto){
+            if($request->foto->foto && Storage::exists($request->foto)){
+                Storage::delete($request->foto);
+        }
+           
+           $request['foto'] = $request->file('foto')->store('produtos', 'public');
+        } */
+
+        Product::where("id", $id)->update($updateProduto);
 
         return redirect()->route('product.index')
                         ->with('success','Produto atualizado com sucesso.');
@@ -91,7 +149,7 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function deslete($id)
+    public function delete($id)
     {
         $produto = Product::find($id)->first();
         $produto->delete();

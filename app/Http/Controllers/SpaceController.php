@@ -40,6 +40,12 @@ class SpaceController extends Controller
     {
         $request->validated();
 
+        return Space::create([
+            'uf_id' => $request['uf_id'],
+            'name' => $request['name'],
+            'complexo' => $request['complexo']
+         ]);
+
         return redirect()->route('space.index')
                         ->with('success','Espaço criado com sucesso.');
     }
@@ -77,9 +83,19 @@ class SpaceController extends Controller
      * @param  \App\Models\Space  $space
      * @return \Illuminate\Http\Response
      */
-    public function update(SpaceRequest $request, Space $spaces)
+    public function update(SpaceRequest $request, $id)
     {
-        $request->validated();
+        $id = $request->id;
+
+        $request->validated([]);
+
+        $updateEspaco = [
+            "uf_id" => $request->uf_id,
+            "name" => $request->name,
+            "complexo" => $request->complexo,
+        ];
+
+        Space::where("id", $id)->update($updateEspaco);
 
         return redirect()->route('space.index')
                         ->with('success','Espaço atualizado com sucesso.');
